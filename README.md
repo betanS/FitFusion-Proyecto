@@ -13,7 +13,7 @@ Enlace al drive del proyecto para ver planteamiento y progreso:
 https://docs.google.com/document/d/1Ebj3bH9GS0NtdyUR71LiQNMEbZPs1ZWr-xn4tn5zh8Y/edit?usp=sharing
 
 Enlace al Figma:
-https://www.figma.com/file/CILd8h6Qneavdct5FV63Nl/Untitled?type=design&node-id=0%3A1&mode=design&t=zJseenEG4IjlZMqN-1
+https://www.figma.com/file/bZuf6cV9rtf7GQkdEMObVb/FitFusion?type=design&node-id=194%3A1561&mode=design&t=P2uqopKVd0rw9aJJ-1
 
 Enlace a un ejemplo de el ER (Exel):
 https://docs.google.com/spreadsheets/d/17VIFPFY9UQSjXxx6hwAwkuWElYqoow9vI5CIwd7J0kk/edit?usp=sharing
