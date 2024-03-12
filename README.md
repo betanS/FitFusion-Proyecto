@@ -15,5 +15,5 @@ https://docs.google.com/document/d/1Ebj3bH9GS0NtdyUR71LiQNMEbZPs1ZWr-xn4tn5zh8Y/
 Enlace al Figma:
 https://www.figma.com/file/CILd8h6Qneavdct5FV63Nl/Untitled?type=design&node-id=0%3A1&mode=design&t=zJseenEG4IjlZMqN-1
 
-Enlace a un ejemplo de el ER:
+Enlace a un ejemplo de el ER (Exel):
 https://docs.google.com/spreadsheets/d/17VIFPFY9UQSjXxx6hwAwkuWElYqoow9vI5CIwd7J0kk/edit?usp=sharing
