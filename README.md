@@ -1,5 +1,5 @@
 <p align="center">
-<img src="https://github.com/betanS/FitFusion-Proyecto/blob/main/Imagenes/FitFusion.png" width="350"/>
+<img src="https://github.com/betanS/FitFusion-Proyecto/blob/main/anteproyecto/Imagenes/FitFusion.png" width="350"/>
 </p>
 "FitFusion" es una aplicación móvil diseñada para ayudar a los usuarios a llevar un estilo de vida saludable mediante el seguimiento de su actividad física, ofreciendo sugerencias personalizadas (Base a: 
 Capacidades[Edad, Estatura/Peso], 
