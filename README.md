@@ -1,13 +1,8 @@
 <p align="center">
 <img src="https://github.com/betanS/FitFusion-Proyecto/blob/main/anteproyecto/Imagenes/logo.png" width="350"/>
 </p>
-"FitFusion" es una aplicación móvil diseñada para ayudar a los usuarios a llevar un estilo de vida saludable mediante el seguimiento de su actividad física, ofreciendo sugerencias personalizadas (Base a: 
-Capacidades[Edad, Estatura/Peso], 
-Deporte [Generico, boxeo, fútbol, baloncesto, etc], 
-Clima [Soleado-Correr, Lluvia-Comba], 
-Objetivo[Ganar músculo, perder peso, etc], 
-Basado en el tiempo de uso [A más tiempo pasa, mayor dificultad]) 
-y enviando recordatorios para mantenerlos motivados y comprometidos con sus objetivos de bienestar.
+
+Si por algún motivo alguno de los documentos/archivos de anteproyecto es innaccesible o está corrupto, dejo debajo los respectivos enlaces actualizados del avance del proyecto. 
 
 Enlace al drive del proyecto para ver planteamiento y progreso:
 https://docs.google.com/document/d/1Ebj3bH9GS0NtdyUR71LiQNMEbZPs1ZWr-xn4tn5zh8Y/edit?usp=sharing
