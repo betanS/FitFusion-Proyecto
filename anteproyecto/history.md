@@ -31,7 +31,7 @@
 - +modeloDatos.jpg
 - +modeloEjemplo.ods
 
-### Cambiado
+### Corregido
 - Modificaciones en el README.
 - Localización de los archivos.
 
