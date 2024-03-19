@@ -33,6 +33,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.fitfusion.FirstTimeScreens.LoginScreen
 import com.example.fitfusion.FirstTimeScreens.RegisterScreen
+import com.example.fitfusion.FirstTimeScreens.RegisterScreen2
 import com.example.fitfusion.FirstTimeScreens.StartScreen
 import com.example.fitfusion.ui.theme.FitFusionTheme
 
@@ -74,6 +75,11 @@ fun App(
                 route = "register"
             ) {
                 RegisterScreen(navController)
+            }
+            composable(
+                route = "register2"
+            ) {
+                RegisterScreen2(navController)
             }
             composable(
                 route = "inicio"

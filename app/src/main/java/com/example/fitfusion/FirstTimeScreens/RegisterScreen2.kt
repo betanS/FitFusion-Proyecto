@@ -13,12 +13,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.example.fitfusion.PassWrd
-import com.example.fitfusion.ShowImage
 import com.example.fitfusion.UserField
 
 @Composable
-fun RegisterScreen(navController: NavController) {
+fun RegisterScreen2(navController: NavController) {
     IconButton(onClick = { navController.navigateUp() }) {
         Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Go back")
     }
@@ -27,12 +25,13 @@ fun RegisterScreen(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        ShowImage()
-        UserField("email")
-        UserField("username")
-        PassWrd()
-        Button (onClick = { navController.navigate("register2") } ) {
-            Text("Login")
+        UserField("Peso")
+        UserField("Estatura")
+
+
+        Button (onClick = { navController.navigate("inicio") } ) {
+            Text("Siguiente")
         }
     }
 }
+
