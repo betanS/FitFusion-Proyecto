@@ -1,4 +1,4 @@
-package com.example.fitfusion
+package com.example.fitfusion.FirstTimeScreens
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -9,20 +9,21 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
+import com.example.fitfusion.ShowImage
 
 @Composable
-fun RegisterScreen(navController: NavController) {
+fun StartScreen(navController: NavController) {
     Column(
         modifier = Modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
-        showImage()
-        UserField("email")
-        UserField("username")
-        PassWrd()
-        Button (onClick = { navController.navigate("inicio") } ) {
+        ShowImage()
+        Button (onClick = { navController.navigate("login") } ) {
             Text("Login")
+        }
+        Button (onClick = { navController.navigate("register") } ) {
+            Text("Register")
         }
     }
 }
