@@ -32,7 +32,7 @@ fun RegisterScreen(navController: NavController) {
         UserField("username")
         PassWrd()
         Button (onClick = { navController.navigate("register2") } ) {
-            Text("Login")
+            Text("Siguiente")
         }
     }
 }

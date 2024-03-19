@@ -16,7 +16,7 @@ import java.util.Date
 
 @Composable
 fun InicioScreen(navController: NavController) {
-    val sdf = SimpleDateFormat("'Date\n'dd-MM-yyyy")
+    val sdf = SimpleDateFormat("'Fecha:\n'dd/MM/yyyy")
     val currentDateAndTime = sdf.format(Date())
 
     Column(
@@ -26,10 +26,13 @@ fun InicioScreen(navController: NavController) {
     ) {
         Text(text = "Pantalla de inicio")
         Text(text = currentDateAndTime)
+
         Spacer(modifier = Modifier.padding(20.dp))
+
         Text(text = "Mañana")
         Text(text = "Tarde")
         Text(text = "Consejo")
+        Text(text = getTemperature("Haria"))
 
     }
 }
