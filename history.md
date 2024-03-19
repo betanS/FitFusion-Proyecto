@@ -5,6 +5,7 @@
 ### Agregado
 - history.md
 - Funcionalidad de navegación mejorada.
+- Agrego la lógica que contacta a la API del tiempo y obtiene temperatura (APIGrabber/getTemperature).
 
 
 ## [Versión 0.2.1] - 2024-03-15
