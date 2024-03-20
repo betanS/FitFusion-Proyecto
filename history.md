@@ -1,5 +1,12 @@
 # Historial de cambios
 
+## [Versión 0.2.2] - 2024-03-20
+
+### Agregado
+- Agrego un planteamiento la lógica para creación y consultas de la base de datos (Login/Registro1 [DataManagement]).
+- 
+
+
 ## [Versión 0.2.2] - 2024-03-19
 
 ### Agregado

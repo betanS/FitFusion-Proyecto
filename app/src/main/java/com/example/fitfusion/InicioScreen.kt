@@ -7,6 +7,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
@@ -18,6 +22,9 @@ import java.util.Date
 fun InicioScreen(navController: NavController) {
     val sdf = SimpleDateFormat("'Fecha:\n'dd/MM/yyyy")
     val currentDateAndTime = sdf.format(Date())
+    var temperature by remember { mutableStateOf("") }
+
+
 
     Column(
         modifier = Modifier.fillMaxSize(),
@@ -32,7 +39,11 @@ fun InicioScreen(navController: NavController) {
         Text(text = "Mañana")
         Text(text = "Tarde")
         Text(text = "Consejo")
-        Text(text = getTemperature("Haria"))
 
+        //Text(text = getTemperature("Haria"))
+        /*LaunchedEffect(Unit) {
+            temperature = getTemperature("Haría")
+        }
+        Text(text = temperature)*/
     }
 }

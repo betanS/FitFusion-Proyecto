@@ -3,23 +3,34 @@ package com.example.fitfusion.FirstTimeScreens
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.navigation.NavController
 import com.example.fitfusion.ClickableTxt
-import com.example.fitfusion.PassWrd
 import com.example.fitfusion.ShowImage
-import com.example.fitfusion.UserField
 
 @Composable
 fun LoginScreen(navController: NavController) {
+    var name by rememberSaveable { mutableStateOf("") }
+    var password by rememberSaveable { mutableStateOf("") }
+    var errortxt by rememberSaveable { mutableStateOf(" ") }
+
     IconButton(onClick = { navController.navigateUp() }) {
         Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Go back")
     }
@@ -29,12 +40,38 @@ fun LoginScreen(navController: NavController) {
         verticalArrangement = Arrangement.Center
     ) {
         ShowImage()
-        UserField("username")
-        PassWrd()
+        TextField(
+            value = name,
+            onValueChange = { name = it },
+            label = { Text("Enter name.") }
+        )
+        TextField(
+            value = password,
+            onValueChange = { password = it },
+            label = { Text("Enter password") },
+            visualTransformation = PasswordVisualTransformation(),
+            keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Password)
+        )
         ClickableTxt()
-        Button (onClick = { navController.navigate("inicio") } ) {
+        Text(text = errortxt,
+            color = Color.Red)
+
+        Button (onClick = {
+            /*
+            if (DatabaseManager.verifyLogin(name, password)) {
+                println("Usuario insertado correctamente.")
+                navController.navigate("inicio")
+            } else {
+                errortxt = "Usuario o contraseña incorrectos.."
+            }
+            */
+            navController.navigate("inicio")
+
+        } ) {
             Text("Login")
         }
     }
+
+
 }
 

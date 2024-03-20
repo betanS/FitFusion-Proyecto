@@ -1,13 +1,12 @@
 package com.example.fitfusion
 
 
-import androidx.compose.runtime.Composable
 import java.io.BufferedReader
 import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 
-@Composable
+
 fun getTemperature(city: String): String {
     val apiKey = "60cb6d67cc3926c8f6f84953c2190ff4"
     val urlString = "http://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey"
@@ -35,7 +34,7 @@ fun getTemperature(city: String): String {
         return "Error fetching data"
     }
 }
-@Composable
+
 fun parseTemperature(jsonResponse: String): Double {
     val jsonObject = jsonResponse.substring(1, jsonResponse.length - 1) // Remove outer curly braces
     val mainIndex = jsonObject.indexOf("\"main\":") + 8
