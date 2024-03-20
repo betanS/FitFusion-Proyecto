@@ -43,7 +43,7 @@
 - Localización de los archivos.
 
 
-## [Versión 0.1.1] - 2024-03-11
+## [Versión 0.1.1] - 2024-03-12
 
 ### Cambiado
 - Modificaciones en el README.
