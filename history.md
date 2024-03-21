@@ -1,6 +1,6 @@
 # Historial de cambios
 
-## [Versión 0.2.3] - 2024-03-20
+## [Versión 0.2.4] - 2024-03-21
 
 ### Agregado
 - Agrego funcionalidades de Retrofit.
