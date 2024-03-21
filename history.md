@@ -3,6 +3,15 @@
 ## [Versión 0.2.3] - 2024-03-20
 
 ### Agregado
+- Agrego funcionalidades de Retrofit.
+
+### Corregido
+- Llamadas a API del tiempo funcionan.
+
+
+## [Versión 0.2.3] - 2024-03-20
+
+### Agregado
 - Agrego un planteamiento la lógica para creación y consultas de la base de datos (Login/Registro1 [DataManagement]).
 
 
