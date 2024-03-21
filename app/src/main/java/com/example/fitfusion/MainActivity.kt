@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -29,6 +30,7 @@ import com.example.fitfusion.FirstTimeScreens.LoginScreen
 import com.example.fitfusion.FirstTimeScreens.RegisterScreen
 import com.example.fitfusion.FirstTimeScreens.RegisterScreen2
 import com.example.fitfusion.FirstTimeScreens.StartScreen
+import com.example.fitfusion.data.MainViewModel
 import com.example.fitfusion.ui.theme.FitFusionTheme
 
 class MainActivity : ComponentActivity() {
@@ -51,6 +53,7 @@ class MainActivity : ComponentActivity() {
 fun App(
     navController: NavHostController = rememberNavController()
 ) {
+    val mainViewModel: MainViewModel = viewModel()
     Scaffold() { innerPadding ->
         NavHost(
             navController = navController,
@@ -77,7 +80,7 @@ fun App(
             composable(
                 route = "inicio"
             ) {
-                InicioScreen(navController)
+                InicioScreen(navController, mainViewModel)
             }
         }
     }

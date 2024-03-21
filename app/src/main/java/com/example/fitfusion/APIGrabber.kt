@@ -6,7 +6,6 @@ import java.io.InputStreamReader
 import java.net.HttpURLConnection
 import java.net.URL
 
-
 fun getTemperature(city: String): String {
     val apiKey = "60cb6d67cc3926c8f6f84953c2190ff4"
     val urlString = "http://api.openweathermap.org/data/2.5/weather?q=$city&appid=$apiKey"
