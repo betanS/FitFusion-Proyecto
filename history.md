@@ -7,6 +7,7 @@
   
 ### Corregido
 - Theme del proyecto. (Basado en Figma)
+- Bug en la pantalla de registro 2.
 
 
 ## [Versión 0.2.4] - 2024-03-21
