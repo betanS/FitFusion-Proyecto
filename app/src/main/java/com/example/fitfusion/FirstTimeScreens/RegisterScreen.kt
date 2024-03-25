@@ -70,8 +70,7 @@ fun RegisterScreen(navController: NavController) {
                 errortxt = "El usuario ya existe en la base de datos."
             }
             */
-            navController.navigate("registro2")
-
+            navController.navigate("register2")
         } ) {
             Text("Siguiente")
         }

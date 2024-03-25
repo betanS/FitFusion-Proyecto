@@ -57,7 +57,7 @@ fun App(
     Scaffold() { innerPadding ->
         NavHost(
             navController = navController,
-            startDestination = "home"
+            startDestination = "inicio"
         ) {
             composable(route = "home") {
                 StartScreen(navController)
