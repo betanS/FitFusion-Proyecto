@@ -1,5 +1,14 @@
 # Historial de cambios
 
+## [Versión 0.3.0] - 2024-03-25
+
+### Agregado
+- Agrego funcionalidades template de la pantalla de Inicio.
+  
+### Corregido
+- Theme del proyecto. (Basado en Figma)
+
+
 ## [Versión 0.2.4] - 2024-03-21
 
 ### Agregado
