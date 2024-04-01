@@ -1,5 +1,12 @@
 # Historial de cambios
 
+
+## [Versión 0.3.1] - 2024-04-01
+
+### Agregado
+- Añado un menú de elección para los ejercicios y su respectiva dificultad.
+
+
 ## [Versión 0.3.0] - 2024-03-25
 
 ### Agregado

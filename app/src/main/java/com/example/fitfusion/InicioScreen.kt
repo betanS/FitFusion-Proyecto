@@ -84,10 +84,10 @@ fun InicioScreen(navController: NavController, viewModel: MainViewModel) {
         //return "Todo bien papu, ${temperatura}"
         if (temperatura!! >= 25){
             return "\uD83E\uDD75 Hace mucho calor, mejor entrena en casa. \uD83E\uDD75"
-        }else if(temperatura < 18){
+        }else if(temperatura < 17){
             return "\uD83E\uDD76 Que pelete, mejor entrena en casa. \uD83E\uDD76"
         }else{
-            return "\uD83D\uDE0E\uD83D\uDC4C Hace un buen dia para salir a correr. \uD83D\uDE0E\uD83D\uDC4C"
+            return "\uD83D\uDE0E Hace un buen dia para salir a correr. \uD83D\uDC4C"
         }
     }
     //#####################DATOS-CONSULTAS###############################
