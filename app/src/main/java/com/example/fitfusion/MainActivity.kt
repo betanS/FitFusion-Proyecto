@@ -81,6 +81,7 @@ fun App(
                 route = "inicio"
             ) {
                 InicioScreen(navController, mainViewModel)
+
             }
         }
     }

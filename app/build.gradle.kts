@@ -55,7 +55,11 @@ dependencies {
     val room_version = "2.6.1"
     implementation("androidx.room:room-runtime:$room_version")
     annotationProcessor("androidx.room:room-compiler:$room_version")
-
+    // Otras dependencias...
+    implementation ("androidx.room:room-runtime:2.4.0")
+    annotationProcessor ("androidx.room:room-compiler:2.4.0")
+    // Opcional: Dependencia para Room con soporte de Kotlin
+    implementation ("androidx.room:room-ktx:2.4.0")
     implementation ("org.xerial:sqlite-jdbc:3.36.0.1")
     implementation ("androidx.navigation:navigation-compose:2.7.7")
     implementation("androidx.core:core-ktx:1.12.0")

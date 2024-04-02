@@ -56,7 +56,18 @@ fun InicioScreen(navController: NavController, viewModel: MainViewModel) {
         Ejercicio(17, "Sentadillas", 5, 14),
         Ejercicio(18, "Sentadillas", 5, 15),
         Ejercicio(19, "Sentadillas", 6, 10),
-        Ejercicio(20, "Sentadillas", 6, 11)
+        Ejercicio(20, "Sentadillas", 6, 11),
+        Ejercicio(21, "Sentadillas", 6, 12),
+        Ejercicio(22, "Sentadillas", 6, 13),
+        Ejercicio(23, "Sentadillas", 6, 14),
+        Ejercicio(24, "Sentadillas", 6, 15),
+        Ejercicio(25, "Sentadillas", 7, 10),
+        Ejercicio(26, "Sentadillas", 7, 11),
+        Ejercicio(27, "Sentadillas", 7, 12),
+        Ejercicio(28, "Sentadillas", 7, 13),
+        Ejercicio(29, "Sentadillas", 7, 14),
+        Ejercicio(30, "Sentadillas", 7, 15)
+
     )
     var listaCardio = listOf(
         Cardio(1, "Correr", 10),
@@ -78,8 +89,20 @@ fun InicioScreen(navController: NavController, viewModel: MainViewModel) {
         Cardio(17, "Correr", 26),
         Cardio(18, "Correr", 27),
         Cardio(19, "Correr", 28),
-        Cardio(20, "Correr", 30)
+        Cardio(20, "Correr", 30),
+        Cardio(21, "Correr", 30),
+        Cardio(22, "Correr", 30),
+        Cardio(23, "Correr", 30),
+        Cardio(24, "Correr", 30),
+        Cardio(25, "Correr", 30),
+        Cardio(26, "Correr", 30),
+        Cardio(27, "Correr", 30),
+        Cardio(28, "Correr", 30),
+        Cardio(29, "Correr", 30),
+        Cardio(30, "Correr", 30)
     )
+
+
     fun consejoDehoy(temperatura: Double?): String{
         //return "Todo bien papu, ${temperatura}"
         if (temperatura!! >= 25){
