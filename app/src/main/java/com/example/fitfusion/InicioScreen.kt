@@ -10,7 +10,11 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -102,6 +106,138 @@ fun InicioScreen(navController: NavController, viewModel: MainViewModel) {
         Cardio(30, "Correr", 30)
     )
 
+    var listaEjerciciosBoxeo = listOf(
+        Ejercicio(1, "Sacos (Asaltos x Minutos)", 3, 3),
+        Ejercicio(2, "Sacos (Asaltos x Minutos)", 3, 3),
+        Ejercicio(3, "Sacos (Asaltos x Minutos)", 3, 3),
+        Ejercicio(4, "Sacos (Asaltos x Minutos)", 3, 3),
+        Ejercicio(5, "Sacos (Asaltos x Minutos)", 3, 3),
+        Ejercicio(6, "Sacos (Asaltos x Minutos)", 3, 3),
+        Ejercicio(7, "Sacos (Asaltos x Minutos)", 4, 3),
+        Ejercicio(8, "Sacos (Asaltos x Minutos)", 4, 3),
+        Ejercicio(9, "Sacos (Asaltos x Minutos)", 4, 3),
+        Ejercicio(10, "Sacos (Asaltos x Minutos)", 4, 3),
+        Ejercicio(11, "Sacos (Asaltos x Minutos)", 4, 3),
+        Ejercicio(12, "Sacos (Asaltos x Minutos)", 4, 3),
+        Ejercicio(13, "Sacos (Asaltos x Minutos)", 5, 3),
+        Ejercicio(14, "Sacos (Asaltos x Minutos)", 5, 3),
+        Ejercicio(15, "Sacos (Asaltos x Minutos)", 5, 3),
+        Ejercicio(16, "Sacos (Asaltos x Minutos)", 5, 3),
+        Ejercicio(17, "Sacos (Asaltos x Minutos)", 5, 3),
+        Ejercicio(18, "Sacos (Asaltos x Minutos)", 5, 3),
+        Ejercicio(19, "Sacos (Asaltos x Minutos)", 6, 3),
+        Ejercicio(20, "Sacos (Asaltos x Minutos)", 6, 3),
+        Ejercicio(21, "Sacos (Asaltos x Minutos)", 6, 3),
+        Ejercicio(22, "Sacos (Asaltos x Minutos)", 6, 3),
+        Ejercicio(23, "Sacos (Asaltos x Minutos)", 6, 3),
+        Ejercicio(24, "Sacos (Asaltos x Minutos)", 6, 3),
+        Ejercicio(25, "Sacos (Asaltos x Minutos)", 7, 3),
+        Ejercicio(26, "Sacos (Asaltos x Minutos)", 7, 3),
+        Ejercicio(27, "Sacos (Asaltos x Minutos)", 7, 3),
+        Ejercicio(28, "Sacos (Asaltos x Minutos)", 7, 3),
+        Ejercicio(29, "Sacos (Asaltos x Minutos)", 7, 3),
+        Ejercicio(30, "Sacos (Asaltos x Minutos)", 7, 3)
+
+    )
+    var listaCardioBoxeo = listOf(
+        Cardio(1, "Comba", 10),
+        Cardio(2, "Correr", 11),
+        Cardio(3, "Comba", 10),
+        Cardio(4, "Correr", 13),
+        Cardio(5, "Comba", 10),
+        Cardio(6, "Correr", 15),
+        Cardio(7, "Comba", 10),
+        Cardio(8, "Correr", 17),
+        Cardio(9, "Comba", 10),
+        Cardio(10, "Correr", 19),
+        Cardio(11, "Comba", 10),
+        Cardio(12, "Correr", 21),
+        Cardio(13, "Comba", 10),
+        Cardio(14, "Correr", 23),
+        Cardio(15, "Comba", 10),
+        Cardio(16, "Correr", 25),
+        Cardio(17, "Comba", 10),
+        Cardio(18, "Correr", 27),
+        Cardio(19, "Comba", 10),
+        Cardio(20, "Correr", 30),
+        Cardio(21, "Comba", 10),
+        Cardio(22, "Correr", 30),
+        Cardio(23, "Comba", 10),
+        Cardio(24, "Correr", 30),
+        Cardio(25, "Comba", 10),
+        Cardio(26, "Correr", 30),
+        Cardio(27, "Correr", 30),
+        Cardio(28, "Correr", 30),
+        Cardio(29, "Correr", 30),
+        Cardio(30, "Correr", 30)
+    )
+
+    var listaEjerciciosFutbol = listOf(
+        Ejercicio(3, "Comba", 3, 12),
+        Ejercicio(2, "Comba", 3, 11),
+        Ejercicio(4, "Comba", 3, 13),
+        Ejercicio(1, "Comba", 3, 10),
+        Ejercicio(5, "Comba", 3, 14),
+        Ejercicio(6, "Comba", 3, 15),
+        Ejercicio(7, "Comba", 4, 10),
+        Ejercicio(8, "Comba", 4, 11),
+        Ejercicio(9, "Comba", 4, 12),
+        Ejercicio(10, "Comba", 4, 13),
+        Ejercicio(11, "Comba", 4, 14),
+        Ejercicio(12, "Comba", 4, 15),
+        Ejercicio(13, "Comba", 5, 10),
+        Ejercicio(14, "Comba", 5, 11),
+        Ejercicio(15, "Comba", 5, 12),
+        Ejercicio(16, "Comba", 5, 13),
+        Ejercicio(17, "Comba", 5, 14),
+        Ejercicio(18, "Comba", 5, 15),
+        Ejercicio(19, "Comba", 6, 10),
+        Ejercicio(20, "Comba", 6, 11),
+        Ejercicio(21, "Comba", 6, 12),
+        Ejercicio(22, "Comba", 6, 13),
+        Ejercicio(23, "Comba", 6, 14),
+        Ejercicio(24, "Comba", 6, 15),
+        Ejercicio(25, "Comba", 7, 10),
+        Ejercicio(26, "Comba", 7, 11),
+        Ejercicio(27, "Comba", 7, 12),
+        Ejercicio(28, "Comba", 7, 13),
+        Ejercicio(29, "Comba", 7, 14),
+        Ejercicio(30, "Comba", 7, 15)
+
+    )
+    var listaCardioFutbol = listOf(
+        Cardio(1, "Correr", 10),
+        Cardio(2, "Correr", 11),
+        Cardio(3, "Correr", 12),
+        Cardio(4, "Correr", 13),
+        Cardio(5, "Correr", 14),
+        Cardio(6, "Correr", 15),
+        Cardio(7, "Correr", 16),
+        Cardio(8, "Correr", 17),
+        Cardio(9, "Correr", 18),
+        Cardio(10, "Correr", 19),
+        Cardio(11, "Correr", 20),
+        Cardio(12, "Correr", 21),
+        Cardio(13, "Correr", 22),
+        Cardio(14, "Correr", 23),
+        Cardio(15, "Correr", 24),
+        Cardio(16, "Correr", 25),
+        Cardio(17, "Correr", 26),
+        Cardio(18, "Correr", 27),
+        Cardio(19, "Correr", 28),
+        Cardio(20, "Correr", 30),
+        Cardio(21, "Correr", 30),
+        Cardio(22, "Correr", 30),
+        Cardio(23, "Correr", 30),
+        Cardio(24, "Correr", 30),
+        Cardio(25, "Correr", 30),
+        Cardio(26, "Correr", 30),
+        Cardio(27, "Correr", 30),
+        Cardio(28, "Correr", 30),
+        Cardio(29, "Correr", 30),
+        Cardio(30, "Correr", 30)
+    )
+
 
     fun consejoDehoy(temperatura: Double?): String{
         //return "Todo bien papu, ${temperatura}"
@@ -115,6 +251,18 @@ fun InicioScreen(navController: NavController, viewModel: MainViewModel) {
     }
     //#####################DATOS-CONSULTAS###############################
     Column {
+        Column (
+            modifier = Modifier
+                .padding(top = 5.dp)
+                .fillMaxWidth(),
+            horizontalAlignment = Alignment.End,
+            verticalArrangement = Arrangement.Top
+        ){
+            IconButton(onClick = { navController.navigate("settings") }) {
+                Icon(imageVector = Icons.Filled.Settings, contentDescription = "Go back")
+            }
+        }
+
         Column (
             modifier = Modifier
                 .padding(top = 20.dp)

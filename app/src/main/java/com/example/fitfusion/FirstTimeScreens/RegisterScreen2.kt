@@ -41,7 +41,7 @@ fun RegisterScreen2(navController: NavController) {
         verticalArrangement = Arrangement.Center
     ) {
 
-        val opcionesTipo: Array<String> = arrayOf("Generico", "Perder Peso", "Boxeo", "Fútbol")
+        val opcionesTipo: Array<String> = arrayOf("Generico", "Boxeo", "Fútbol")
         MenuOpciones(opcionesTipo, "Tipo de entrenamiento:")
         val opcionesdificultad: Array<String> = arrayOf("Fácil", "Medio", "Difícil")
         MenuOpciones(opcionesdificultad, "Dificultad:")

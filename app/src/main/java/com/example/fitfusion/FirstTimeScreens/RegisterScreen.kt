@@ -23,30 +23,15 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.navigation.NavController
 import com.example.fitfusion.ShowImage
-import com.example.fitfusion.localdatabase.MyApp
+import com.example.fitfusion.localdatabase.AppDatabaseViewModel
 import com.example.fitfusion.localdatabase.User
 
 @Composable
-fun RegisterScreen(navController: NavController) {
+fun RegisterScreen(navController: NavController, databaseViewModel: AppDatabaseViewModel) {
     var email by rememberSaveable { mutableStateOf("") }
     var name by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     var errortxt by rememberSaveable { mutableStateOf(" ") }
-
-    suspend fun insertUserIfNotExists(username: String, email: String): Boolean {
-        val existingUser = MyApp.database.userDao().getUserByUsernameOrEmail(username, email)
-        if (existingUser != null) {
-            errortxt = "Usuario o Correo ya existente."
-            return false
-            // El usuario o el correo electrónico ya existen en la base de datos
-            // Puedes mostrar un mensaje de error o tomar alguna otra acción
-        } else {
-            // El usuario y el correo electrónico no existen, puedes proceder a insertar el nuevo usuario
-            val user = User(username = name, email = email, password = password)
-            MyApp.database.userDao().insert(user)
-            return true
-        }
-    }
 
     IconButton(onClick = { navController.navigateUp() }) {
         Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Go back")
@@ -78,11 +63,18 @@ fun RegisterScreen(navController: NavController) {
         Text(text = errortxt,
             color = Color.Red)
 
-        Button (onClick = {
-            insertUserIfNotExists(name, email)
-            navController.navigate("register2")
-        } ) {
+        Button(onClick = {
+            if (databaseViewModel.getUserByUsernameOrEmail(name, email) != null) {
+                errortxt = "Usuario o Correo ya existente."
+            } else {
+                val user = User(username = name, email = email, password = password)
+                databaseViewModel.insert(user)
+                navController.navigate("inicio")
+            }
+        }) {
             Text("Siguiente")
         }
+    }
 
 }
+

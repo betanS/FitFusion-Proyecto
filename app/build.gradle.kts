@@ -1,6 +1,7 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+    id("com.google.devtools.ksp")
 }
 
 android {
@@ -58,6 +59,7 @@ dependencies {
     // Otras dependencias...
     implementation ("androidx.room:room-runtime:2.4.0")
     annotationProcessor ("androidx.room:room-compiler:2.4.0")
+    ksp("androidx.room:room-compiler:2.6.1")
     // Opcional: Dependencia para Room con soporte de Kotlin
     implementation ("androidx.room:room-ktx:2.4.0")
     implementation ("org.xerial:sqlite-jdbc:3.36.0.1")
