@@ -64,12 +64,13 @@ fun RegisterScreen(navController: NavController, databaseViewModel: AppDatabaseV
             color = Color.Red)
 
         Button(onClick = {
-            if (databaseViewModel.getUserByUsernameOrEmail(name, email) != null) {
-                errortxt = "Usuario o Correo ya existente."
-            } else {
-                val user = User(username = name, email = email, password = password)
+            val user = User(username = name, email = email, password = password)
+            try {
                 databaseViewModel.insert(user)
                 navController.navigate("inicio")
+            } catch (e: Exception) {
+                errortxt = "Ocurrió un error al registrar el usuario. Por favor, inténtelo de nuevo más tarde."
+                // Log error
             }
         }) {
             Text("Siguiente")

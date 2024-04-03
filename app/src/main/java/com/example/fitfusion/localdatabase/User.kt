@@ -1,6 +1,7 @@
 package com.example.fitfusion.localdatabase
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity
