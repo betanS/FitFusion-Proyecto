@@ -1,6 +1,25 @@
 # Historial de cambios
 
+## [Versión 0.3.3] - 2024-04-03
 
+### Agregado
+- Creo la pantalla de Ajustes (SettingsScreen)
+- Trabajo la pantalla Register (no funciona por ahora)
+
+### Corregido
+- Arreglo bugs pequeños
+- Modifico el Room.
+  
+
+## [Versión 0.3.2] - 2024-04-02
+
+### Agregado
+- Primeros planteamientos del Room.
+  
+### Corregido
+- Arreglo bugs pequeños
+
+  
 ## [Versión 0.3.1] - 2024-04-01
 
 ### Agregado
