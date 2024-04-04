@@ -64,11 +64,6 @@ fun RegisterScreen2(
         }
         /*val opcionesdificultad: Array<String> = arrayOf("Fácil", "Medio", "Difícil")
         MenuOpciones(opcionesdificultad, "Dificultad:")*/
-        Button (onClick = {
-
-        } ) {
-            Text("Siguiente")
-        }
 
         Button (onClick = {
             val newTraining: Training = Training(
