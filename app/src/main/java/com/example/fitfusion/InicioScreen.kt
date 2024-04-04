@@ -1,5 +1,7 @@
 package com.example.fitfusion
 
+import android.annotation.SuppressLint
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,6 +19,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
@@ -30,16 +33,52 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.fitfusion.data.MainViewModel
+import com.example.fitfusion.localdatabase.AppDatabaseViewModel
+import com.example.fitfusion.localdatabase.Training
+import kotlinx.coroutines.flow.first
 import java.text.SimpleDateFormat
 import java.util.Date
+import java.time.LocalDate
 
 @Composable
-fun InicioScreen(navController: NavController, viewModel: MainViewModel) {
+fun InicioScreen(navController: NavController, viewModel: MainViewModel, databaseViewModel: AppDatabaseViewModel) {
+    val isLoading: Boolean by databaseViewModel.isLoading.observeAsState(initial = true)
+
+    if (isLoading) {
+        Log.e("APACHE", "HELICOPTERO DE COMBATE ULTRA MATRIX")
+    } else {
+        InicioScreenCargado(
+            navController,
+            viewModel,
+            databaseViewModel
+        )
+    }
+
+    databaseViewModel.getTrainingById(3)
+
+}
+
+@SuppressLint("SimpleDateFormat")
+@Composable
+fun InicioScreenCargado(
+    navController: NavController,
+    viewModel: MainViewModel,
+    databaseViewModel: AppDatabaseViewModel
+) {
     val sdf = SimpleDateFormat("dd/MM/yyyy")
-    val currentDateAndTime = sdf.format(Date())
+    val hoy = sdf.parse(sdf.format(Date()))
+    
     //#####################DATOS-CONSULTAS###############################
     val city = "Haria"
-    val diaDeEntrenamiento = 5//Ejemplo dia 1-30
+    var diaDeEntrenamiento: Long = 5 //Ejemplo dia 1-30
+    val currentTraining = databaseViewModel.getTrainingById(3).collectAsState(initial = emptyList())
+    var fechaEntrenamiento = hoy
+
+    if (currentTraining.value.isNotEmpty()) {
+        fechaEntrenamiento = SimpleDateFormat("dd/MM/yyyy").parse(currentTraining.value.first().fecha)
+        diaDeEntrenamiento = 1 + (hoy.time - fechaEntrenamiento.time) / (24 * 60 * 60 * 1000)
+    }
+
     var listaEjercicios = listOf(
         Ejercicio(1, "Sentadillas", 3, 10),
         Ejercicio(2, "Sentadillas", 3, 11),
@@ -249,6 +288,7 @@ fun InicioScreen(navController: NavController, viewModel: MainViewModel) {
             return "\uD83D\uDE0E Hace un buen dia para salir a correr. \uD83D\uDC4C"
         }
     }
+
     //#####################DATOS-CONSULTAS###############################
     Column {
         Column (
@@ -297,7 +337,7 @@ fun InicioScreen(navController: NavController, viewModel: MainViewModel) {
         Spacer(modifier = Modifier.size(70.dp))
 
         Column {
-            Text("Fecha: ${currentDateAndTime}",
+            Text("Fecha: ${hoy}",
                 fontSize = 30.sp,
                 textAlign = TextAlign.Left,
                 color = Color(0xFFBCBCBC))
@@ -307,10 +347,10 @@ fun InicioScreen(navController: NavController, viewModel: MainViewModel) {
 
         Column {
             Row {
-                Text("Mañana: \n ${listaCardio[diaDeEntrenamiento - 1].name} - ${listaCardio[diaDeEntrenamiento - 1].durationMins} minutos.",
+                /*Text("Mañana: \n ${listaCardio[diaDeEntrenamiento - 1].name} - ${listaCardio[diaDeEntrenamiento - 1].durationMins} minutos.",
                     fontSize = 20.sp,
                     textAlign = TextAlign.Left
-                )
+                )*/
             }
             Row {
                 val buttonColor = remember { mutableStateOf(Color.Gray) }
@@ -327,10 +367,10 @@ fun InicioScreen(navController: NavController, viewModel: MainViewModel) {
 
         Column {
             Row {
-                Text("Tarde: \n ${listaEjercicios[diaDeEntrenamiento - 1].name} - ${listaEjercicios[diaDeEntrenamiento - 1].sets} x ${listaEjercicios[diaDeEntrenamiento - 1].reps}",
+                /*Text("Tarde: \n ${listaEjercicios[diaDeEntrenamiento - 1].name} - ${listaEjercicios[diaDeEntrenamiento - 1].sets} x ${listaEjercicios[diaDeEntrenamiento - 1].reps}",
                     fontSize = 20.sp,
                     textAlign = TextAlign.Left
-                )
+                )*/
             }
             Row {
                 val buttonColor = remember { mutableStateOf(Color.Gray) }

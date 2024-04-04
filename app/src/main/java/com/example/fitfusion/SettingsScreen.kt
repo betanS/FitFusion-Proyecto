@@ -47,10 +47,10 @@ fun SettingsScreen(navController: NavController){
         verticalArrangement = Arrangement.Center
     ) {
 
-        val opcionesTipo2: Array<String> = arrayOf("Generico", "Boxeo", "Fútbol")
+        /*val opcionesTipo2: Array<String> = arrayOf("Generico", "Boxeo", "Fútbol")
         MenuOpciones(opcionesTipo2, "Cambiar entrenamiento?")
         val opcionesDificultad2: Array<String> = arrayOf("Fácil", "Medio", "Difícil")
-        MenuOpciones(opcionesDificultad2, "Cambiar dificultad?")
+        MenuOpciones(opcionesDificultad2, "Cambiar dificultad?")*/
         
         Spacer(modifier = Modifier.size(70.dp))
         

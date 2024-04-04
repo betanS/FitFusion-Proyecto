@@ -34,8 +34,8 @@ import androidx.room.Room
 import com.example.fitfusion.FirstTimeScreens.RegisterScreen2
 import com.example.fitfusion.FirstTimeScreens.StartScreen
 import com.example.fitfusion.data.MainViewModel
-import com.example.fitfusion.localdatabase.usuarios.AppDatabase
-import com.example.fitfusion.localdatabase.usuarios.AppDatabaseViewModel
+import com.example.fitfusion.localdatabase.AppDatabase
+import com.example.fitfusion.localdatabase.AppDatabaseViewModel
 import com.example.fitfusion.ui.theme.FitFusionTheme
 
 @Suppress("UNCHECKED_CAST")
@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
         Room.databaseBuilder(
             context = applicationContext,
             klass = AppDatabase::class.java,
-            name = "user.db"
+            name = "database.db"
         ).build()
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -84,8 +84,8 @@ fun App(
             startDestination = "home"
         ) {
             composable(route = "home") {
-                Column {
-                    /*Text(text = "DEBUG. Lista de usuarios", color = Color.White)
+                /*Column {
+                    Text(text = "DEBUG. Lista de usuarios", color = Color.White)
                         val userList = databaseViewModel.getAllUsers().collectAsState(initial = emptyList())
                         LazyColumn {
                             if (userList.value.isEmpty()) {
@@ -100,8 +100,8 @@ fun App(
                                     Text(" Name: ${user.username}", color = Color.White)
                                 }
                             }
-                        }*/
-                }
+                        }
+                }*/
                 StartScreen(navController)
             }
             /*composable(
@@ -117,13 +117,12 @@ fun App(
             composable(
                 route = "register2"
             ) {
-                RegisterScreen2(navController)
+                RegisterScreen2(navController, databaseViewModel)
             }
             composable(
                 route = "inicio"
             ) {
-                InicioScreen(navController, mainViewModel)
-
+                InicioScreen(navController, mainViewModel, databaseViewModel)
             }
             composable(
                 route = "settings"

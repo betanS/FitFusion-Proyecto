@@ -24,7 +24,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.navigation.NavController
 import com.example.fitfusion.ClickableTxt
 import com.example.fitfusion.ShowImage
-import com.example.fitfusion.localdatabase.usuarios.AppDatabaseViewModel
+import com.example.fitfusion.localdatabase.AppDatabaseViewModel
 
 @Composable
 fun LoginScreen(navController: NavController, databaseViewModel: AppDatabaseViewModel) {

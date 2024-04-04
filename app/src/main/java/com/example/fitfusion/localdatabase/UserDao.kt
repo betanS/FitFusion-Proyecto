@@ -1,4 +1,4 @@
-package com.example.fitfusion.localdatabase.usuarios
+package com.example.fitfusion.localdatabase
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -17,11 +17,18 @@ interface UserDao {
     suspend fun getUserByUsername(username: String): List<User>
 
     @Query("SELECT * FROM user WHERE email = :email")
-    suspend fun getUserByEmail(email: String): List<User>
+    fun getUserByEmail(email: String): Flow<List<User>>
 
     // Nuevas funciones para comprobar si el usuario o el correo electrónico ya existen
     @Query("SELECT * FROM user WHERE username = :username OR email = :email")
-    suspend fun getUserByUsernameOrEmail(username: String, email: String): List<User>
+    fun getUserByUsernameOrEmail(username: String, email: String): Flow<List<User>>
 
+    @Insert
+    suspend fun insertTraining(training: Training)
+
+    @Query("SELECT * FROM training")
+    fun getAllTrainings(): Flow<List<Training>>
+
+    @Query("SELECT * FROM training WHERE id = :id")
+    fun getTrainingById(id: Int): Flow<List<Training>>
 }
-

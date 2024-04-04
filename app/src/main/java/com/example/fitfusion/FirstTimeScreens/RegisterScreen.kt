@@ -23,8 +23,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.navigation.NavController
 import com.example.fitfusion.ShowImage
-import com.example.fitfusion.localdatabase.usuarios.AppDatabaseViewModel
-import com.example.fitfusion.localdatabase.usuarios.User
+import com.example.fitfusion.localdatabase.AppDatabaseViewModel
+import com.example.fitfusion.localdatabase.User
 
 @Composable
 fun RegisterScreen(navController: NavController, databaseViewModel: AppDatabaseViewModel) {

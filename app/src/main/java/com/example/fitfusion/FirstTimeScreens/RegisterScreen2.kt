@@ -1,5 +1,6 @@
 package com.example.fitfusion.FirstTimeScreens
 
+import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -20,18 +21,27 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.fitfusion.localdatabase.AppDatabaseViewModel
+import com.example.fitfusion.localdatabase.Training
+import java.text.SimpleDateFormat
+import java.util.Date
 
+@SuppressLint("SimpleDateFormat")
 @Composable
-fun RegisterScreen2(navController: NavController) {
-
+fun RegisterScreen2(
+    navController: NavController,
+    databaseViewModel: AppDatabaseViewModel
+) {
     IconButton(onClick = { navController.navigateUp() }) {
         Icon(imageVector = Icons.Filled.ArrowBack, contentDescription = "Go back")
     }
@@ -40,13 +50,29 @@ fun RegisterScreen2(navController: NavController) {
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
+        val isLoading: Boolean by databaseViewModel.isLoading.observeAsState(initial = true)
+        if (!isLoading) {
+            navController.navigate("inicio")
+        }
 
+        Text(text = "Continua o crea tu entrenamiento", color = Color.White)
         val opcionesTipo: Array<String> = arrayOf("Generico", "Boxeo", "Fútbol")
-        MenuOpciones(opcionesTipo, "Tipo de entrenamiento:")
-        val opcionesdificultad: Array<String> = arrayOf("Fácil", "Medio", "Difícil")
-        MenuOpciones(opcionesdificultad, "Dificultad:")
+        var entrenamientoSeleccionado by remember { mutableStateOf(opcionesTipo.first()) }
 
-        Button (onClick = { navController.navigate("inicio") } ) {
+        MenuOpciones(opcionesTipo, "Tipo de entrenamiento:") { seleccion ->
+            entrenamientoSeleccionado = seleccion
+        }
+        /*val opcionesdificultad: Array<String> = arrayOf("Fácil", "Medio", "Difícil")
+        MenuOpciones(opcionesdificultad, "Dificultad:")*/
+
+        Button (onClick = {
+            val newTraining: Training = Training(
+                dia = 0,
+                fecha = SimpleDateFormat("dd/MM/yyyy").format(Date()),
+                entrenamiento = entrenamientoSeleccionado
+            )
+            databaseViewModel.insert(newTraining)
+        } ) {
             Text("Siguiente")
         }
     }
@@ -54,9 +80,9 @@ fun RegisterScreen2(navController: NavController) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun MenuOpciones(opciones: Array<String>, titulo: String) {
+fun MenuOpciones(opciones: Array<String>, titulo: String, onSeleccion: (opcion: String) -> Unit) {
     val context = LocalContext.current
-    val coffeeDrinks = opciones
+    val listaOpciones = opciones
     var expanded by remember { mutableStateOf(false) }
     var selectedText by remember { mutableStateOf(titulo) }
 
@@ -83,10 +109,11 @@ fun MenuOpciones(opciones: Array<String>, titulo: String) {
                 expanded = expanded,
                 onDismissRequest = { expanded = false }
             ) {
-                coffeeDrinks.forEach { item ->
+                listaOpciones.forEach { item ->
                     DropdownMenuItem(
                         text = { Text(text = item) },
                         onClick = {
+                            onSeleccion(item)
                             selectedText = item
                             expanded = false
                             Toast.makeText(context, item, Toast.LENGTH_SHORT).show()

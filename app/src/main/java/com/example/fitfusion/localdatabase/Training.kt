@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 data class Training(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
-    val dia: Int,
+    val dia: Int, // se puede quitar
     val fecha: String,
     val entrenamiento: String
 )
