@@ -24,10 +24,11 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.navigation.NavController
 import com.example.fitfusion.ClickableTxt
 import com.example.fitfusion.ShowImage
+import com.example.fitfusion.localdatabase.usuarios.AppDatabaseViewModel
 
 @Composable
-fun LoginScreen(navController: NavController) {
-    var name by rememberSaveable { mutableStateOf("") }
+fun LoginScreen(navController: NavController, databaseViewModel: AppDatabaseViewModel) {
+    var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     var errortxt by rememberSaveable { mutableStateOf(" ") }
 
@@ -41,9 +42,9 @@ fun LoginScreen(navController: NavController) {
     ) {
         ShowImage()
         TextField(
-            value = name,
-            onValueChange = { name = it },
-            label = { Text("Enter name.") }
+            value = email,
+            onValueChange = { email = it },
+            label = { Text("Enter email.") }
         )
         TextField(
             value = password,
@@ -56,22 +57,24 @@ fun LoginScreen(navController: NavController) {
         Text(text = errortxt,
             color = Color.Red)
 
-        Button (onClick = {
-            /*
-            if (DatabaseManager.verifyLogin(name, password)) {
-                println("Usuario insertado correctamente.")
+        Button(onClick = {
+            // Obtener el email y la contraseña ingresados por el usuario
+            val emailInput = email
+            val passwordInput = password
+
+            // Verificar el email y la contraseña utilizando el ViewModel
+            /*val loginSuccessful = databaseViewModel.loginUser(emailInput, passwordInput)
+            if (loginSuccessful) {
+                // Si el inicio de sesión es exitoso, navegar a la pantalla de inicio
                 navController.navigate("inicio")
             } else {
-                errortxt = "Usuario o contraseña incorrectos.."
-            }
-            */
-            navController.navigate("inicio")
-
-        } ) {
+                // Si el inicio de sesión falla, mostrar un mensaje de error
+                errortxt = "Email o contraseña incorrectos"
+            }*/
+        }) {
             Text("Login")
         }
+
     }
-
-
 }
 

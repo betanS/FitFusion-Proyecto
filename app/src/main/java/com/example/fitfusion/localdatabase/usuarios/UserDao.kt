@@ -1,4 +1,4 @@
-package com.example.fitfusion.localdatabase
+package com.example.fitfusion.localdatabase.usuarios
 
 import androidx.room.Dao
 import androidx.room.Insert
@@ -22,12 +22,6 @@ interface UserDao {
     // Nuevas funciones para comprobar si el usuario o el correo electrónico ya existen
     @Query("SELECT * FROM user WHERE username = :username OR email = :email")
     suspend fun getUserByUsernameOrEmail(username: String, email: String): List<User>
-
-    @Query("SELECT id FROM User WHERE username = :username OR email = :email GROUP BY id HAVING COUNT(id) > 1")
-    suspend fun getDuplicateUserIds(username: String, email: String): List<Long>
-
-    @Query("DELETE FROM User WHERE id IN (:userIds)")
-    suspend fun deleteUsersByIds(userIds: List<Long>)
 
 }
 

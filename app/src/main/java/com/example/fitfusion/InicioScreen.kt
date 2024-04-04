@@ -258,9 +258,9 @@ fun InicioScreen(navController: NavController, viewModel: MainViewModel) {
             horizontalAlignment = Alignment.End,
             verticalArrangement = Arrangement.Top
         ){
-            IconButton(onClick = { navController.navigate("settings") }) {
+           /* IconButton(onClick = { navController.navigate("settings") }) {
                 Icon(imageVector = Icons.Filled.Settings, contentDescription = "Go back")
-            }
+            }*/
         }
 
         Column (

@@ -23,8 +23,8 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.navigation.NavController
 import com.example.fitfusion.ShowImage
-import com.example.fitfusion.localdatabase.AppDatabaseViewModel
-import com.example.fitfusion.localdatabase.User
+import com.example.fitfusion.localdatabase.usuarios.AppDatabaseViewModel
+import com.example.fitfusion.localdatabase.usuarios.User
 
 @Composable
 fun RegisterScreen(navController: NavController, databaseViewModel: AppDatabaseViewModel) {
@@ -62,14 +62,21 @@ fun RegisterScreen(navController: NavController, databaseViewModel: AppDatabaseV
         )
         Text(text = errortxt,
             color = Color.Red)
+        /*try {
+            println("${databaseViewModel.getUserByEmail(email)}")
+            println("${databaseViewModel.getUserByUsername(name)}")
+        }catch (e:Exception){
+            Text(text = "No existe el usuario")
+        }*/
 
         Button(onClick = {
             val user = User(username = name, email = email, password = password)
+
             try {
                 databaseViewModel.insert(user)
                 navController.navigate("inicio")
             } catch (e: Exception) {
-                errortxt = "Ocurrió un error al registrar el usuario. Por favor, inténtelo de nuevo más tarde."
+                errortxt = "La dirección de email ya existe."
                 // Log error
             }
         }) {

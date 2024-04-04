@@ -1,19 +1,10 @@
 package com.example.fitfusion.localdatabase
 
 import androidx.room.Entity
-import androidx.room.Index
 import androidx.room.PrimaryKey
 
 @Entity
-data class User(
-    @PrimaryKey(autoGenerate = true)
-    val id: Long = 0,
-    val username: String,
-    val email: String,
-    val password: String
-)
-@Entity
-data class training(
+data class Training(
     @PrimaryKey(autoGenerate = true)
     val id: Long = 0,
     val dia: Int,

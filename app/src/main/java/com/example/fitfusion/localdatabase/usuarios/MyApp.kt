@@ -1,4 +1,4 @@
-package com.example.fitfusion.localdatabase
+package com.example.fitfusion.localdatabase.usuarios
 
 import android.app.Application
 import androidx.room.Room

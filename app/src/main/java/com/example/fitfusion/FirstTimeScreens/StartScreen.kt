@@ -24,7 +24,7 @@ fun StartScreen(navController: NavController) {
         verticalArrangement = Arrangement.Center
     ) {
         ShowImage()
-        Button (onClick = { navController.navigate("login") },
+        /*Button (onClick = { navController.navigate("login") },
             modifier = Modifier.height(80.dp).width(250.dp).padding(10.dp)
             ) {
             Text("Login", fontSize = 25.sp)
@@ -33,6 +33,11 @@ fun StartScreen(navController: NavController) {
             modifier = Modifier.height(80.dp).width(250.dp).padding(10.dp)
         ) {
             Text("Register", fontSize = 25.sp)
+        }*/
+        Button (onClick = { navController.navigate("register2") },
+            modifier = Modifier.height(80.dp).width(250.dp).padding(10.dp)
+        ) {
+            Text("Entrar", fontSize = 25.sp)
         }
     }
 }

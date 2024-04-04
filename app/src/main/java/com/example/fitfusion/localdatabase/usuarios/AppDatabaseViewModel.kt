@@ -1,4 +1,4 @@
-package com.example.fitfusion.localdatabase
+package com.example.fitfusion.localdatabase.usuarios
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -36,21 +36,4 @@ class AppDatabaseViewModel(
             _isLoading.value = false
         }
     }
-
-    fun getUserByEmail(email: String) {
-        viewModelScope.launch {
-            _isLoading.value = true
-            _user.postValue(dao.getUserByEmail(email).first())
-            _isLoading.value = false
-        }
-    }
-
-    fun getUserByUsernameOrEmail(username: String, email: String) {
-        viewModelScope.launch {
-            _isLoading.value = true
-            _user.postValue(dao.getUserByUsernameOrEmail(username, email).first())
-            _isLoading.value = false
-        }
-    }
-
 }

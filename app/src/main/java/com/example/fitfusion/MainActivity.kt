@@ -10,25 +10,18 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.text.ClickableText
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.AnnotatedString
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
@@ -38,14 +31,11 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.room.Room
-import com.example.fitfusion.FirstTimeScreens.LoginScreen
-import com.example.fitfusion.FirstTimeScreens.RegisterScreen
 import com.example.fitfusion.FirstTimeScreens.RegisterScreen2
 import com.example.fitfusion.FirstTimeScreens.StartScreen
 import com.example.fitfusion.data.MainViewModel
-import com.example.fitfusion.localdatabase.AppDatabase
-import com.example.fitfusion.localdatabase.AppDatabaseViewModel
-import com.example.fitfusion.localdatabase.User
+import com.example.fitfusion.localdatabase.usuarios.AppDatabase
+import com.example.fitfusion.localdatabase.usuarios.AppDatabaseViewModel
 import com.example.fitfusion.ui.theme.FitFusionTheme
 
 @Suppress("UNCHECKED_CAST")
@@ -75,6 +65,7 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
+
                     App(databaseViewModel)
                 }
             }
@@ -94,7 +85,7 @@ fun App(
         ) {
             composable(route = "home") {
                 Column {
-                    Text(text = "DEBUG. Lista de usuarios", color = Color.White)
+                    /*Text(text = "DEBUG. Lista de usuarios", color = Color.White)
                         val userList = databaseViewModel.getAllUsers().collectAsState(initial = emptyList())
                         LazyColumn {
                             if (userList.value.isEmpty()) {
@@ -106,23 +97,23 @@ fun App(
                                     Text("Usuarios en la DB: ${userList.value.size}", color = Color.White)
                                 }
                                 items(userList.value) { user ->
-                                    Text("ID: ${user.id} - Name: ${user.username}", color = Color.White)
+                                    Text(" Name: ${user.username}", color = Color.White)
                                 }
                             }
-                        }
+                        }*/
                 }
                 StartScreen(navController)
             }
-            composable(
+            /*composable(
                 route = "login",
             ) {
-                LoginScreen(navController)
+                LoginScreen(navController, databaseViewModel)
             }
             composable(
                 route = "register"
             ) {
                 RegisterScreen(navController, databaseViewModel)
-            }
+            }*/
             composable(
                 route = "register2"
             ) {
