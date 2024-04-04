@@ -31,4 +31,9 @@ interface UserDao {
 
     @Query("SELECT * FROM training WHERE id = :id")
     fun getTrainingById(id: Int): Flow<List<Training>>
+
+    @Query("DELETE FROM training")
+    fun deleteAll()
+
+
 }

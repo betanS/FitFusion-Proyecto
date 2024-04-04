@@ -55,4 +55,7 @@ class AppDatabaseViewModel(
     fun getTrainingById(id: Int): Flow<List<Training>> {
         return dao.getTrainingById(id)
     }
+    fun deleteall(){
+        return dao.deleteAll()
+    }
 }

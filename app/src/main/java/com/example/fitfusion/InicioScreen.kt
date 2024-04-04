@@ -54,7 +54,7 @@ fun InicioScreen(navController: NavController, viewModel: MainViewModel, databas
         )
     }
 
-    databaseViewModel.getTrainingById(3)
+    databaseViewModel.getTrainingById(1)
 
 }
 
@@ -71,15 +71,18 @@ fun InicioScreenCargado(
     //#####################DATOS-CONSULTAS###############################
     val city = "Haria"
     var diaDeEntrenamiento: Long = 5 //Ejemplo dia 1-30
-    val currentTraining = databaseViewModel.getTrainingById(3).collectAsState(initial = emptyList())
+    val currentTraining = databaseViewModel.getTrainingById(1).collectAsState(initial = emptyList())
     var fechaEntrenamiento = hoy
+    var entrenamiento = ""
 
     if (currentTraining.value.isNotEmpty()) {
         fechaEntrenamiento = SimpleDateFormat("dd/MM/yyyy").parse(currentTraining.value.first().fecha)
         diaDeEntrenamiento = 1 + (hoy.time - fechaEntrenamiento.time) / (24 * 60 * 60 * 1000)
+        entrenamiento = currentTraining.value.first().entrenamiento
     }
 
-    var listaEjercicios = listOf(
+
+    val listaEjercicios = listOf(
         Ejercicio(1, "Sentadillas", 3, 10),
         Ejercicio(2, "Sentadillas", 3, 11),
         Ejercicio(3, "Sentadillas", 3, 12),
@@ -110,42 +113,9 @@ fun InicioScreenCargado(
         Ejercicio(28, "Sentadillas", 7, 13),
         Ejercicio(29, "Sentadillas", 7, 14),
         Ejercicio(30, "Sentadillas", 7, 15)
-
-    )
-    var listaCardio = listOf(
-        Cardio(1, "Correr", 10),
-        Cardio(2, "Correr", 11),
-        Cardio(3, "Correr", 12),
-        Cardio(4, "Correr", 13),
-        Cardio(5, "Correr", 14),
-        Cardio(6, "Correr", 15),
-        Cardio(7, "Correr", 16),
-        Cardio(8, "Correr", 17),
-        Cardio(9, "Correr", 18),
-        Cardio(10, "Correr", 19),
-        Cardio(11, "Correr", 20),
-        Cardio(12, "Correr", 21),
-        Cardio(13, "Correr", 22),
-        Cardio(14, "Correr", 23),
-        Cardio(15, "Correr", 24),
-        Cardio(16, "Correr", 25),
-        Cardio(17, "Correr", 26),
-        Cardio(18, "Correr", 27),
-        Cardio(19, "Correr", 28),
-        Cardio(20, "Correr", 30),
-        Cardio(21, "Correr", 30),
-        Cardio(22, "Correr", 30),
-        Cardio(23, "Correr", 30),
-        Cardio(24, "Correr", 30),
-        Cardio(25, "Correr", 30),
-        Cardio(26, "Correr", 30),
-        Cardio(27, "Correr", 30),
-        Cardio(28, "Correr", 30),
-        Cardio(29, "Correr", 30),
-        Cardio(30, "Correr", 30)
     )
 
-    var listaEjerciciosBoxeo = listOf(
+    val listaEjerciciosBoxeo = listOf(
         Ejercicio(1, "Sacos (Asaltos x Minutos)", 3, 3),
         Ejercicio(2, "Sacos (Asaltos x Minutos)", 3, 3),
         Ejercicio(3, "Sacos (Asaltos x Minutos)", 3, 3),
@@ -178,40 +148,8 @@ fun InicioScreenCargado(
         Ejercicio(30, "Sacos (Asaltos x Minutos)", 7, 3)
 
     )
-    var listaCardioBoxeo = listOf(
-        Cardio(1, "Comba", 10),
-        Cardio(2, "Correr", 11),
-        Cardio(3, "Comba", 10),
-        Cardio(4, "Correr", 13),
-        Cardio(5, "Comba", 10),
-        Cardio(6, "Correr", 15),
-        Cardio(7, "Comba", 10),
-        Cardio(8, "Correr", 17),
-        Cardio(9, "Comba", 10),
-        Cardio(10, "Correr", 19),
-        Cardio(11, "Comba", 10),
-        Cardio(12, "Correr", 21),
-        Cardio(13, "Comba", 10),
-        Cardio(14, "Correr", 23),
-        Cardio(15, "Comba", 10),
-        Cardio(16, "Correr", 25),
-        Cardio(17, "Comba", 10),
-        Cardio(18, "Correr", 27),
-        Cardio(19, "Comba", 10),
-        Cardio(20, "Correr", 30),
-        Cardio(21, "Comba", 10),
-        Cardio(22, "Correr", 30),
-        Cardio(23, "Comba", 10),
-        Cardio(24, "Correr", 30),
-        Cardio(25, "Comba", 10),
-        Cardio(26, "Correr", 30),
-        Cardio(27, "Correr", 30),
-        Cardio(28, "Correr", 30),
-        Cardio(29, "Correr", 30),
-        Cardio(30, "Correr", 30)
-    )
 
-    var listaEjerciciosFutbol = listOf(
+    val listaEjerciciosFutbol = listOf(
         Ejercicio(3, "Comba", 3, 12),
         Ejercicio(2, "Comba", 3, 11),
         Ejercicio(4, "Comba", 3, 13),
@@ -244,7 +182,72 @@ fun InicioScreenCargado(
         Ejercicio(30, "Comba", 7, 15)
 
     )
-    var listaCardioFutbol = listOf(
+    val listaCardioBoxeo = listOf(
+        Cardio(1, "Comba", 10),
+        Cardio(2, "Correr", 11),
+        Cardio(3, "Comba", 10),
+        Cardio(4, "Correr", 13),
+        Cardio(5, "Comba", 10),
+        Cardio(6, "Correr", 15),
+        Cardio(7, "Comba", 10),
+        Cardio(8, "Correr", 17),
+        Cardio(9, "Comba", 10),
+        Cardio(10, "Correr", 19),
+        Cardio(11, "Comba", 10),
+        Cardio(12, "Correr", 21),
+        Cardio(13, "Comba", 10),
+        Cardio(14, "Correr", 23),
+        Cardio(15, "Comba", 10),
+        Cardio(16, "Correr", 25),
+        Cardio(17, "Comba", 10),
+        Cardio(18, "Correr", 27),
+        Cardio(19, "Comba", 10),
+        Cardio(20, "Correr", 30),
+        Cardio(21, "Comba", 10),
+        Cardio(22, "Correr", 30),
+        Cardio(23, "Comba", 10),
+        Cardio(24, "Correr", 30),
+        Cardio(25, "Comba", 10),
+        Cardio(26, "Correr", 30),
+        Cardio(27, "Correr", 30),
+        Cardio(28, "Correr", 30),
+        Cardio(29, "Correr", 30),
+        Cardio(30, "Correr", 30)
+    )
+    val listaCardio = listOf(
+        Cardio(1, "Correr", 10),
+        Cardio(2, "Correr", 11),
+        Cardio(3, "Correr", 12),
+        Cardio(4, "Correr", 13),
+        Cardio(5, "Correr", 14),
+        Cardio(6, "Correr", 15),
+        Cardio(7, "Correr", 16),
+        Cardio(8, "Correr", 17),
+        Cardio(9, "Correr", 18),
+        Cardio(10, "Correr", 19),
+        Cardio(11, "Correr", 20),
+        Cardio(12, "Correr", 21),
+        Cardio(13, "Correr", 22),
+        Cardio(14, "Correr", 23),
+        Cardio(15, "Correr", 24),
+        Cardio(16, "Correr", 25),
+        Cardio(17, "Correr", 26),
+        Cardio(18, "Correr", 27),
+        Cardio(19, "Correr", 28),
+        Cardio(20, "Correr", 30),
+        Cardio(21, "Correr", 30),
+        Cardio(22, "Correr", 30),
+        Cardio(23, "Correr", 30),
+        Cardio(24, "Correr", 30),
+        Cardio(25, "Correr", 30),
+        Cardio(26, "Correr", 30),
+        Cardio(27, "Correr", 30),
+        Cardio(28, "Correr", 30),
+        Cardio(29, "Correr", 30),
+        Cardio(30, "Correr", 30)
+    )
+
+    val listaCardioFutbol = listOf(
         Cardio(1, "Correr", 10),
         Cardio(2, "Correr", 11),
         Cardio(3, "Correr", 12),
@@ -279,13 +282,12 @@ fun InicioScreenCargado(
 
 
     fun consejoDehoy(temperatura: Double?): String{
-        //return "Todo bien papu, ${temperatura}"
-        if (temperatura!! >= 25){
-            return "\uD83E\uDD75 Hace mucho calor, mejor entrena en casa. \uD83E\uDD75"
+        return if (temperatura!! >= 25){
+            "\uD83E\uDD75 Hace mucho calor, mejor entrena en casa. \uD83E\uDD75"
         }else if(temperatura < 17){
-            return "\uD83E\uDD76 Que pelete, mejor entrena en casa. \uD83E\uDD76"
+            "\uD83E\uDD76 Que pelete, mejor entrena en casa. \uD83E\uDD76"
         }else{
-            return "\uD83D\uDE0E Hace un buen dia para salir a correr. \uD83D\uDC4C"
+            "\uD83D\uDE0E Hace un buen dia para salir a correr. \uD83D\uDC4C"
         }
     }
 
@@ -313,7 +315,7 @@ fun InicioScreenCargado(
             Spacer(modifier = Modifier.size(70.dp))
 
             Text(
-                text = "Día ${diaDeEntrenamiento}",
+                text = "Día ${diaDeEntrenamiento.toInt()}",
                 textAlign = TextAlign.Center,
                 fontSize = 50.sp,
                 color = Color(0xFFEE4F2B)
@@ -337,7 +339,7 @@ fun InicioScreenCargado(
         Spacer(modifier = Modifier.size(70.dp))
 
         Column {
-            Text("Fecha: ${hoy}",
+            Text("Fecha: ${sdf.format(Date())}",
                 fontSize = 30.sp,
                 textAlign = TextAlign.Left,
                 color = Color(0xFFBCBCBC))
@@ -347,10 +349,35 @@ fun InicioScreenCargado(
 
         Column {
             Row {
-                /*Text("Mañana: \n ${listaCardio[diaDeEntrenamiento - 1].name} - ${listaCardio[diaDeEntrenamiento - 1].durationMins} minutos.",
+                Text("Mañana: \n ${
+                    when (entrenamiento) {
+                        "Boxeo" -> {
+                            listaCardioBoxeo[(diaDeEntrenamiento - 1).toInt()].name
+                        }
+                        "Fútbol" -> {
+                            listaCardioFutbol[(diaDeEntrenamiento - 1).toInt()].name
+                        }
+                        else -> {
+                            listaCardio[(diaDeEntrenamiento - 1).toInt()].name
+                        }
+                    }
+                } - ${
+                    when (entrenamiento) {
+                        "Boxeo" -> {
+                            listaCardioBoxeo[(diaDeEntrenamiento - 1).toInt()].durationMins
+                        }
+                        "Fútbol" -> {
+                            listaCardioFutbol[(diaDeEntrenamiento - 1).toInt()].durationMins
+                        }
+                        else -> {
+                            listaCardio[(diaDeEntrenamiento - 1).toInt()].durationMins
+                        }
+                    }
+                } minutos.",
+
                     fontSize = 20.sp,
                     textAlign = TextAlign.Left
-                )*/
+                )
             }
             Row {
                 val buttonColor = remember { mutableStateOf(Color.Gray) }
@@ -367,10 +394,46 @@ fun InicioScreenCargado(
 
         Column {
             Row {
-                /*Text("Tarde: \n ${listaEjercicios[diaDeEntrenamiento - 1].name} - ${listaEjercicios[diaDeEntrenamiento - 1].sets} x ${listaEjercicios[diaDeEntrenamiento - 1].reps}",
+                Text("Tarde: \n ${
+                    when (entrenamiento) {
+                        "Boxeo" -> {
+                            listaEjerciciosBoxeo[(diaDeEntrenamiento - 1).toInt()].name
+                        }
+                        "Fútbol" -> {
+                            listaEjerciciosFutbol[(diaDeEntrenamiento - 1).toInt()].name
+                        }
+                        else -> {
+                            listaEjercicios[(diaDeEntrenamiento - 1).toInt()].name
+                        }
+                    }
+                } - ${
+                    when (entrenamiento) {
+                        "Boxeo" -> {
+                            listaEjerciciosBoxeo[(diaDeEntrenamiento - 1).toInt()].sets
+                        }
+                        "Fútbol" -> {
+                            listaEjerciciosFutbol[(diaDeEntrenamiento - 1).toInt()].sets
+                        }
+                        else -> {
+                            listaEjercicios[(diaDeEntrenamiento - 1).toInt()].sets
+                        }
+                    }
+                } x ${
+                    when (entrenamiento) {
+                        "Boxeo" -> {
+                            listaEjerciciosBoxeo[(diaDeEntrenamiento - 1).toInt()].reps
+                        }
+                        "Fútbol" -> {
+                            listaEjerciciosFutbol[(diaDeEntrenamiento - 1).toInt()].reps
+                        }
+                        else -> {
+                            listaEjercicios[(diaDeEntrenamiento - 1).toInt()].reps
+                        }
+                    }
+                } ",
                     fontSize = 20.sp,
                     textAlign = TextAlign.Left
-                )*/
+                )
             }
             Row {
                 val buttonColor = remember { mutableStateOf(Color.Gray) }
