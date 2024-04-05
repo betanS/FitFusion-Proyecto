@@ -4,10 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.fitfusion.localdatabase.User
-import com.example.fitfusion.localdatabase.UserDao
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
 class AppDatabaseViewModel(
@@ -47,6 +44,7 @@ class AppDatabaseViewModel(
     fun insert(training: Training) {
         viewModelScope.launch {
             _isLoading.value = true
+            dao.deleteAll()
             dao.insertTraining(training)
             _isLoading.value = false
         }
@@ -55,7 +53,10 @@ class AppDatabaseViewModel(
     fun getTrainingById(id: Int): Flow<List<Training>> {
         return dao.getTrainingById(id)
     }
-    fun deleteall(){
-        return dao.deleteAll()
+    fun continueDoNothing() {
+        viewModelScope.launch {
+            _isLoading.value = true
+            _isLoading.value = false
+        }
     }
 }

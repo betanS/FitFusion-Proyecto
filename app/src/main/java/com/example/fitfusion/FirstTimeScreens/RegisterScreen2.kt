@@ -3,11 +3,10 @@ package com.example.fitfusion.FirstTimeScreens
 import android.annotation.SuppressLint
 import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Button
@@ -20,6 +19,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
@@ -56,6 +56,7 @@ fun RegisterScreen2(
         }
 
         Text(text = "Continua o crea tu entrenamiento", color = Color.White)
+
         val opcionesTipo: Array<String> = arrayOf("Generico", "Boxeo", "Fútbol")
         var entrenamientoSeleccionado by remember { mutableStateOf(opcionesTipo.first()) }
 
@@ -65,17 +66,45 @@ fun RegisterScreen2(
         /*val opcionesdificultad: Array<String> = arrayOf("Fácil", "Medio", "Difícil")
         MenuOpciones(opcionesdificultad, "Dificultad:")*/
 
+        var errortxt by remember {
+            mutableStateOf("")
+        }
+        var localidad by remember {
+            mutableStateOf("")
+        }
+        val currentTraining = databaseViewModel.getTrainingById(1).collectAsState(initial = emptyList())
+        TextField(value = localidad,
+            onValueChange = { localidad = it },
+            label = { Text("Introducir localidad.") })
+        Spacer(modifier = Modifier.size(20.dp))
         Button (onClick = {
+            if (localidad == ""){localidad = "Haria"}
             val newTraining: Training = Training(
-                dia = 0,
+                id = 1,
+                localidad = localidad,
                 fecha = SimpleDateFormat("dd/MM/yyyy").format(Date()),
                 entrenamiento = entrenamientoSeleccionado
             )
-            //databaseViewModel.deleteall()
             databaseViewModel.insert(newTraining)
         } ) {
-            Text("Siguiente")
+            Text("Empezar Plan Nuevo")
         }
+        Spacer(modifier = Modifier.size(80.dp))
+        Button (onClick = {
+            if (currentTraining.value.isNotEmpty()){
+                databaseViewModel.continueDoNothing()
+            }else{
+                errortxt = "No existe ningun entrenamiento"
+            }
+        } ) {
+            Text("Continuar Plan Existente")
+        }
+
+        Spacer(modifier = Modifier.size(10.dp))
+        Text(text = errortxt, color = Color.Red)
+        Spacer(modifier = Modifier.size(10.dp))
+
+
     }
 }
 
@@ -87,11 +116,7 @@ fun MenuOpciones(opciones: Array<String>, titulo: String, onSeleccion: (opcion: 
     var expanded by remember { mutableStateOf(false) }
     var selectedText by remember { mutableStateOf(titulo) }
 
-    Box(
-        modifier = Modifier
-            .fillMaxWidth()
-            .padding(32.dp)
-    ) {
+
         ExposedDropdownMenuBox(
             expanded = expanded,
             onExpandedChange = {
@@ -123,5 +148,5 @@ fun MenuOpciones(opciones: Array<String>, titulo: String, onSeleccion: (opcion: 
                 }
             }
         }
-    }
+
 }

@@ -12,11 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Settings
 import androidx.compose.material3.Button
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -34,18 +30,15 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.fitfusion.data.MainViewModel
 import com.example.fitfusion.localdatabase.AppDatabaseViewModel
-import com.example.fitfusion.localdatabase.Training
-import kotlinx.coroutines.flow.first
 import java.text.SimpleDateFormat
 import java.util.Date
-import java.time.LocalDate
 
 @Composable
 fun InicioScreen(navController: NavController, viewModel: MainViewModel, databaseViewModel: AppDatabaseViewModel) {
     val isLoading: Boolean by databaseViewModel.isLoading.observeAsState(initial = true)
 
     if (isLoading) {
-        Log.e("APACHE", "HELICOPTERO DE COMBATE ULTRA MATRIX")
+        Log.e("CARGANDO", "CARGANDO EL PROGRAMA")
     } else {
         InicioScreenCargado(
             navController,
@@ -69,13 +62,14 @@ fun InicioScreenCargado(
     val hoy = sdf.parse(sdf.format(Date()))
     
     //#####################DATOS-CONSULTAS###############################
-    val city = "Haria"
+    var city = "Haria"
     var diaDeEntrenamiento: Long = 5 //Ejemplo dia 1-30
     val currentTraining = databaseViewModel.getTrainingById(1).collectAsState(initial = emptyList())
     var fechaEntrenamiento = hoy
     var entrenamiento = ""
 
     if (currentTraining.value.isNotEmpty()) {
+        city = currentTraining.value.first().localidad
         fechaEntrenamiento = SimpleDateFormat("dd/MM/yyyy").parse(currentTraining.value.first().fecha)
         diaDeEntrenamiento = 1 + (hoy.time - fechaEntrenamiento.time) / (24 * 60 * 60 * 1000)
         entrenamiento = currentTraining.value.first().entrenamiento

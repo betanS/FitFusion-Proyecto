@@ -5,9 +5,9 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Training(
-    @PrimaryKey(autoGenerate = true)
-    val id: Long = 0,
-    val dia: Int, // se puede quitar
+    @PrimaryKey
+    val id: Int,
+    val localidad: String,
     val fecha: String,
     val entrenamiento: String
 )
