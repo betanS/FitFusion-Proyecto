@@ -1,5 +1,28 @@
 # Historial de cambios
 
+## [Versión 0.4.0] - 2024-04-05
+
+### Agregado
+- Botón de continuar sin crear tabla nueva.
+- Funcionalidad y cuadro de texto para modificar la localidad.
+
+### Corregido
+- Arreglo bugs importantes (se creaban tablas infinitas)
+
+
+## [Versión 0.3.4] - 2024-04-04
+
+### Agregado
+- Base de datos de "Training" (almacenamiento y consulta día a día)
+- Lógica de el paso de los días.
+
+### Corregido
+- Todas las funciones de la pantalla de inicio adaptadas a la base de datos.
+
+### Eliminado
+- Funcionalidades de Login/Register y Settings. (Siguen en el código comentados)
+
+
 ## [Versión 0.3.3] - 2024-04-03
 
 ### Agregado
